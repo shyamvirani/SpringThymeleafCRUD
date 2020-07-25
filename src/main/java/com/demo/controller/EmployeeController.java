@@ -26,7 +26,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
-	@GetMapping("/signup")
+	@GetMapping("/start")
 	public String showSignUpForm(Employee employee) {
 		return "add-employee";
 	}
