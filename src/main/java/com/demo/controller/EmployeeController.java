@@ -1,6 +1,5 @@
 package com.demo.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -12,12 +11,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.demo.model.Employee;
-import com.demo.repository.EmployeeRepository;
 import com.demo.service.EmployeeService;
 
 @Controller
@@ -43,7 +39,7 @@ public class EmployeeController {
 			return "add-employee";
 		}
 		employeeService.addEmployee(employee);
-		;
+		
 		return "redirect:list";
 	}
 
@@ -68,7 +64,6 @@ public class EmployeeController {
 	@PostMapping("update/{empId}")
 	public String updateEmployee(@PathVariable("empId") Long empId, @Valid Employee employee,
 			BindingResult bindingResult, Model model) {
-
 		employeeService.updateEmployee(employee);
 		model.addAttribute("employees", employeeService.getAllEmployee());
 		return "index";
